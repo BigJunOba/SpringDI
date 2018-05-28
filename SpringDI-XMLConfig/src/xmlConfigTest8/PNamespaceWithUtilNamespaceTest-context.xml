@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util 
+                           http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<!-- 3.这样就能向使用其他的bean那样，将磁道列表bean注入到reallyBlankDisc bean中的tracks属性中 -->
+	<bean id="compactDisc" class="xmlConfigTest8.reallyBlankDisc"
+		  p:title="Sgt. Pepper's Lonely Hearts Club Band" 
+		  p:artist="The Beatles"
+		  p:tracks-ref="trackList" />
+
+	<!-- 1.util-命名空间的<util:list>元素，会创建一个列表的bean -->
+	<!-- 2.借助<util:list>元素，可以将磁道列表转移到reallyBlankDisc bean之外，并将其声明到单独的bean之中 -->
+	<util:list id="trackList">
+		<value>Sgt. Pepper's Lonely Hearts Club Band</value>
+		<value>With a Little Help from My Friends</value>
+		<value>Lucy in the Sky with Diamonds</value>
+		<value>Getting Better</value>
+		<value>Fixing a Hole</value>
+		<value>She's Leaving Home</value>
+		<value>Being for the Benefit of Mr. Kite!</value>
+		<value>Within You Without You</value>
+		<value>When I'm Sixty-Four</value>
+		<value>Lovely Rita</value>
+		<value>Good Morning Good Morning</value>
+		<value>Sgt. Pepper's Lonely Hearts Club Band (Reprise)</value>
+		<value>A Day in the Life</value>
+	</util:list>
+
+	<bean id="cdPlayer" class="xmlConfigTest8.CDPlayer"
+		p:compactDisc-ref="compactDisc" />
+
+</beans>

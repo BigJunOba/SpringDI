@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 声明SgtPeppers bean，并且SgtPeppers类实现了CompacDisc接口，所以实际上已经有了一个可以注入到CDPlayer bean中的bean -->
+	<bean id="compactDisc" class="xmlConfigTest1.SgtPeppers" />
+
+	<!-- 1.当Spring遇到这个标签时，会创建一个CDPlayer实例。 -->
+	<!-- 2.<constructor-arg>元素会告知Spring要将一个ID为compactDisc的bean引用传递到CDPlayer的构造器中。 -->
+	<bean id="cdPlayer" class="xmlConfigTest1.CDPlayer"><constructor-arg ref="compactDisc" /></bean>
+
+</beans>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	                       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 使用value属性，通过该属性表明给定的值要以字面量的形式注入到构造器之中。-->
+	<bean id="compactDisc" class="xmlConfigTest3.BlankDisc">
+		<constructor-arg value="You Don't Love Me， LaDao" />
+		<constructor-arg value="Jay Chou" />
+	</bean>
+
+	<bean id="cdPlayer" class="xmlConfigTest3.CDPlayer">
+		<constructor-arg ref="compactDisc" />
+	</bean>
+
+</beans>

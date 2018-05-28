@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:c="http://www.springframework.org/schema/c"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	                       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="compactDisc" class="xmlConfigTest2.SgtPeppers" />
+
+	<!-- 1.使用c-命名空间来声明构造器参数 -->
+	<!-- 2.使用c-命名空间属性要比使用<constructor-arg>元素简练得多-->
+	<!-- 3.这里要注意的是“c:cd-ref”中cd是CDPlayer类的构造器中指明的CompactDisc类型的字段。 -->
+	<!-- 4.可以将参数名称替换为索引，即“c:_0-ref”表示的是第一个构造器参数 -->
+	<!-- 5.在只有一个构造器参数的情况下，根本不用去标示参数。 -->
+	<bean id="cdPlayer" class="xmlConfigTest2.CDPlayer" c:cd-ref="compactDisc" />
+
+</beans>
+

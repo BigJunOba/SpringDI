@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	                       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 通过 <property> 元素的value属性来设置title、artist和tracks属性-->
+	<bean id="compactDisc" class="xmlConfigTest6.reallyBlankDisc">
+		<property name="title" value="Sgt. Pepper's Lonely Hearts Club Band" />
+		<property name="artist" value="The Beatles" />
+		<property name="tracks">
+			<list>
+				<value>Sgt. Pepper's Lonely Hearts Club Band</value>
+				<value>With a Little Help from My Friends</value>
+				<value>Lucy in the Sky with Diamonds</value>
+				<value>Getting Better</value>
+				<value>Fixing a Hole</value>
+				<value>She's Leaving Home</value>
+				<value>Being for the Benefit of Mr. Kite!</value>
+				<value>Within You Without You</value>
+				<value>When I'm Sixty-Four</value>
+				<value>Lovely Rita</value>
+				<value>Good Morning Good Morning</value>
+				<value>Sgt. Pepper's Lonely Hearts Club Band (Reprise)</value>
+				<value>A Day in the Life</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 1.<property>元素为属性的Setter方法所提供的功能与<contructor-arg>元素为构造器所提供的功能是一样的  -->
+	<!-- 2.通过ref属性引用了ID为compactDisc的bean，并将其通过setCompactDisc()方法注入到compactDisc属性中 -->
+	<bean id="cdPlayer" class="xmlConfigTest6.CDPlayer">
+		<property name="compactDisc" ref="compactDisc" />
+	</bean>
+	
+
+</beans>
